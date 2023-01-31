@@ -1,0 +1,44 @@
+.character-container {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  position: relative;
+  right: 1px;
+  animation: blink-animation 0.85s steps(5, start) infinite;
+  -webkit-animation: blink-animation 0.85s steps(5, start) infinite;
+  top: 0px;
+  margin: 0px;
+  height: 45px;
+  width: 1px;
+  background-color: aliceblue;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.shadow {
+  color: #7e7e7e;
+}
+
+.correct {
+  color: white;
+}
+
+.space {
+  margin-right: 7px;
+}
+
+.active {
+  color: green;
+}
