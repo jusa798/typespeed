@@ -6,6 +6,7 @@ function Character(props) {
     if (props.char === " ") {
       return <div className='space'></div>;
     } else {
+      <div className="shadow"></div>
       return props.char;
     }
   };
@@ -14,7 +15,7 @@ function Character(props) {
     <div className='character-container'>
       <div className={`${props.active ? "active" : ""}`}> </div>
       <div
-        className={`"character" ${props.correct ? "correct" : "shadow"} `}
+        className={`"character" ${props.correct ? "correct": "incorrect" }`}
         id={props.active ? "active" : ""}>
         {renderChar()}
       </div>

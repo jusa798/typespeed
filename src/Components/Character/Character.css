@@ -27,12 +27,16 @@
   }
 }
 
-.shadow {
+.character {
   color: #7e7e7e;
 }
 
 .correct {
   color: white;
+}
+
+.incorrect {
+  color:red; 
 }
 
 .space {

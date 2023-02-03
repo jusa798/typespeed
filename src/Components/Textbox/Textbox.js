@@ -36,6 +36,7 @@ function Textbox() {
   const [gameActive, setGameActive] = useState(false);
   const [correctnessArray, setCorrectnessArray] = useState([]);
   const [startDate, setStartDate] = useState();
+  const [errorsArray, setErrorsArray] = useState([])
   const [wpm, setWPM] = useState(0);
 
   const handleCharacterEntry = (e) => {
@@ -43,10 +44,14 @@ function Textbox() {
       if (e.key === textArr[pos]) {
         setCorrectnessArray([...correctnessArray, true]);
         setPos((prevPos) => prevPos + 1);
+      } else {
+        setCorrectnessArray([...correctnessArray, false]);
+        console.log(correctnessArray == false )
+        setPos((prevPos) => prevPos + 1);
+      }
         if (pos === textArr.length - 1) {
           setGameActive(false);
-        }
-      }
+        } 
     } else {
       if (e.key === "Enter" && pos != 0) {
         setGameActive(true);
@@ -61,6 +66,11 @@ function Textbox() {
         setPos((prevPos) => prevPos + 1);
       }
     }
+    if (e.key === "Backspace" && pos != 0) {
+      setPos((prevPos) => prevPos - 2);
+      console.log(pos)
+    }
+
   };
 
   const calculateWPM = (delta) => {
@@ -113,3 +123,9 @@ function Textbox() {
 }
 
 export default Textbox;
+
+
+// be able to go back and type the same letter again
+// update the css to go back the prev state before you type 
+// allow user to go forward even if they typed incorrectly. Highlight it red.
+// keep track of how many they have gotten incorrect, even if they fixed it 
