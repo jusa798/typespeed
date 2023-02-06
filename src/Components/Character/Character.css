@@ -27,7 +27,7 @@
   }
 }
 
-.character {
+.shadow {
   color: #7e7e7e;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .incorrect {
-  color:red; 
+  color: red;
 }
 
 .space {

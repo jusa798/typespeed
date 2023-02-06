@@ -36,22 +36,29 @@ function Textbox() {
   const [gameActive, setGameActive] = useState(false);
   const [correctnessArray, setCorrectnessArray] = useState([]);
   const [startDate, setStartDate] = useState();
-  const [errorsArray, setErrorsArray] = useState([])
+  const [errorsArray, setErrorsArray] = useState([]);
   const [wpm, setWPM] = useState(0);
 
   const handleCharacterEntry = (e) => {
+    if (e.key === "Backspace" && pos != 0) {
+      setPos((prevPos) => prevPos - 1);
+      return;
+    }
+    if (pos === textArr.length - 1) {
+      setGameActive(false);
+    }
     if (gameActive) {
       if (e.key === textArr[pos]) {
-        setCorrectnessArray([...correctnessArray, true]);
+        let copy = correctnessArray;
+        copy[pos] = true;
+        setCorrectnessArray(copy);
         setPos((prevPos) => prevPos + 1);
       } else {
-        setCorrectnessArray([...correctnessArray, false]);
-        console.log(correctnessArray == false )
+        let copy = correctnessArray;
+        copy[pos] = false;
+        setCorrectnessArray(copy);
         setPos((prevPos) => prevPos + 1);
       }
-        if (pos === textArr.length - 1) {
-          setGameActive(false);
-        } 
     } else {
       if (e.key === "Enter" && pos != 0) {
         setGameActive(true);
@@ -66,11 +73,6 @@ function Textbox() {
         setPos((prevPos) => prevPos + 1);
       }
     }
-    if (e.key === "Backspace" && pos != 0) {
-      setPos((prevPos) => prevPos - 2);
-      console.log(pos)
-    }
-
   };
 
   const calculateWPM = (delta) => {
@@ -80,7 +82,6 @@ function Textbox() {
 
     const charsPM = pos / 5;
     let deltaInMinutes = delta / 1000 / 60;
-    console.log(pos);
     return Math.round(charsPM / deltaInMinutes);
   };
 
@@ -124,8 +125,7 @@ function Textbox() {
 
 export default Textbox;
 
-
 // be able to go back and type the same letter again
-// update the css to go back the prev state before you type 
+// update the css to go back the prev state before you type
 // allow user to go forward even if they typed incorrectly. Highlight it red.
-// keep track of how many they have gotten incorrect, even if they fixed it 
+// keep track of how many they have gotten incorrect, even if they fixed it

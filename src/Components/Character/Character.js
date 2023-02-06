@@ -6,19 +6,24 @@ function Character(props) {
     if (props.char === " ") {
       return <div className='space'></div>;
     } else {
-      <div className="shadow"></div>
-      return props.char;
+      return <div className=''>{props.char}</div>;
+    }
+  };
+
+  const characterState = (state) => {
+    if (state === false) {
+      return "incorrect";
+    } else if (state === true) {
+      return "correct";
+    } else {
+      return "shadow";
     }
   };
 
   return (
-    <div className='character-container'>
-      <div className={`${props.active ? "active" : ""}`}> </div>
-      <div
-        className={`"character" ${props.correct ? "correct": "incorrect" }`}
-        id={props.active ? "active" : ""}>
-        {renderChar()}
-      </div>
+    <div className='character-container shadow'>
+      <div className={`${props.active ? "active" : ""}`}></div>
+      <div className={`${characterState(props.correct)}`}>{renderChar()}</div>
     </div>
   );
 }
