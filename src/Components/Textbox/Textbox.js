@@ -56,6 +56,7 @@ function Textbox() {
       } else {
         let copy = correctnessArray;
         copy[pos] = false;
+
         setCorrectnessArray(copy);
         setPos((prevPos) => prevPos + 1);
       }
