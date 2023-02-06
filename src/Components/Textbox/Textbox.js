@@ -91,7 +91,7 @@ function Textbox() {
   }, []);
 
   useInterval(() => {
-    if (!gameActive) {
+    if (!gameActive) { 
       return;
     }
     setWPM(calculateWPM(Date.now() - startDate), 100);
@@ -124,7 +124,7 @@ function Textbox() {
 }
 
 export default Textbox;
-
+// fuck you 
 // be able to go back and type the same letter again
 // update the css to go back the prev state before you type
 // allow user to go forward even if they typed incorrectly. Highlight it red.
